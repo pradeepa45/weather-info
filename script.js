@@ -1,6 +1,6 @@
 let countryName,countryObj;
 let cityName;
-let urlcountry =  "http://countriesnow.space/api/v0.1/countries";
+let urlcountry =  "https://countriesnow.space/api/v0.1/countries";
 let countryRequest = new XMLHttpRequest();
 countryRequest.open("GET", urlcountry);
 countryRequest.send();
