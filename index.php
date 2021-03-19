@@ -82,5 +82,6 @@
             </form>
             <p id="last-observation" style="padding: 5px;"></p>
     </div>
+	<p style="padding:5px;">Copyright@WeatherInfo</p>
 </body>
 </html>
