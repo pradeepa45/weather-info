@@ -1,6 +1,6 @@
 let countryName,countryObj;
 let cityName;
-let urlcountry =  "https://countriesnow.space/api/v0.1/countries";
+let urlcountry =  "http://countriesnow.space/api/v0.1/countries";
 let countryRequest = new XMLHttpRequest();
 countryRequest.open("GET", urlcountry);
 countryRequest.send();
@@ -39,7 +39,7 @@ function setCity(){
 function getWeather(){
     cityName = document.getElementById("city-name").value;
     // console.log(cityName);
-    let url = "https://api.weatherstack.com/current?access_key=220419e1d2eb28444afff031cb1bf17a&query="+cityName;
+    let url = "http://api.weatherstack.com/current?access_key=220419e1d2eb28444afff031cb1bf17a&query="+cityName;
     let req = new XMLHttpRequest(); 
     req.open("GET", url);
     req.send();
