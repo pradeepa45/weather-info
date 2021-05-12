@@ -85,13 +85,7 @@
             </form>
             <p id="last-observation" style="padding: 5px;"></p>
     </div>
-<<<<<<< HEAD
     <hr>
     <p style="padding: 5px;">Copyright@WeatherInfo</p>
 </body>
 </html>
-=======
-    <p style="padding:5px;">Copyright@WeatherInfo</p>
-</body>
-</html>
->>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84
