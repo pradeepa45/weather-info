@@ -1,15 +1,13 @@
 <html>
-<title>
-    Weather Info
-</title>
-    <link rel="icon" href="Images/icon.jpg" type="image/x-icon">
-    <link href="style.css" rel="stylesheet">
-    <script src="script.js"></script>
-<<<<<<< HEAD
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-=======
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
->>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84
+<head>
+    <title>
+        Weather Info
+    </title>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <link rel="icon" href="Images/icon.jpg" type="image/x-icon">
+        <link href="style.css" rel="stylesheet">
+        <script src="script.js"></script>
+</head>
 <body>
     <div class="header">
         <h1>Weather Info</h1>
@@ -93,7 +91,7 @@
 </body>
 </html>
 =======
-	<p style="padding:5px;">Copyright@WeatherInfo</p>
+    <p style="padding:5px;">Copyright@WeatherInfo</p>
 </body>
 </html>
 >>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84
