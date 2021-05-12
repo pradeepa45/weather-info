@@ -5,7 +5,11 @@
     <link rel="icon" href="Images/icon.jpg" type="image/x-icon">
     <link href="style.css" rel="stylesheet">
     <script src="script.js"></script>
+<<<<<<< HEAD
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+=======
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+>>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84
 <body>
     <div class="header">
         <h1>Weather Info</h1>
@@ -83,7 +87,13 @@
             </form>
             <p id="last-observation" style="padding: 5px;"></p>
     </div>
+<<<<<<< HEAD
     <hr>
     <p style="padding: 5px;">Copyright@WeatherInfo</p>
 </body>
 </html>
+=======
+	<p style="padding:5px;">Copyright@WeatherInfo</p>
+</body>
+</html>
+>>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84

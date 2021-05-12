@@ -114,4 +114,8 @@ select option{
 *::before,
 *::after {
   box-sizing: border-box;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84

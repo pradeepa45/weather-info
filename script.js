@@ -40,13 +40,20 @@ function getWeather(){
     cityName = document.getElementById("city-name").value;
     // console.log(cityName);
     let url = "http://api.weatherstack.com/current?access_key=220419e1d2eb28444afff031cb1bf17a&query="+cityName;
+<<<<<<< HEAD
     
+=======
+>>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84
     let req = new XMLHttpRequest(); 
     req.open("GET", url);
     req.send();
     req.onload = ()=>{
         let obj = JSON.parse(req.response);
+<<<<<<< HEAD
         console.log(obj);
+=======
+        // console.log(obj);
+>>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84
         let timeNow = obj.location.localtime;
         let splitTimeNow = timeNow.split(" ");
         console.log(splitTimeNow[1]);
@@ -181,3 +188,7 @@ function getWeather(){
         // // console.log(city);
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84
