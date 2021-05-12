@@ -5,6 +5,7 @@
     <link rel="icon" href="Images/icon.jpg" type="image/x-icon">
     <link href="style.css" rel="stylesheet">
     <script src="script.js"></script>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <body>
     <div class="header">
         <h1>Weather Info</h1>
