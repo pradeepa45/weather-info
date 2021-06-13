@@ -9,12 +9,12 @@
         <script src="script.js"></script>
 </head>
 <body>
-    <div class="header">
+    <nav class="navbar-light bg-light bg-gradient">
         <h1>Weather Info</h1>
-    </div>
+</nav>
     <hr>
-    <div class="frosted">
-        <div class = "one-more">
+    <div>
+        <div>
             <label for="country-select" class="seperate">Select Country</label>
             <!-- </br> -->
             <select name="country-select" class ="selector" id="country-name" placeholder="Your Country" required onchange="setCity()">

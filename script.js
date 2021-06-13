@@ -42,7 +42,7 @@ function getWeather() {
     console.log(cityName);
     // let url = "http://api.weatherstack.com/current?access_key=220419e1d2eb28444afff031cb1bf17a&query="+cityName;
     const apiKey = 'bd7228b267c6855b266b2f63b49faf53';
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
     let req = new XMLHttpRequest();
     req.open("GET", url);
     req.send();
@@ -50,9 +50,11 @@ function getWeather() {
         let obj = JSON.parse(req.response);
         console.log(obj);
         if (obj.cod == 404) {
-            document.getElementById('error').style.display = 'block'
+            document.getElementById('data').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
         }
         else {
+            document.getElementById('error').style.display = 'none'
             document.getElementById('data').style.display = 'block';
             console.log(obj.weather);
             const timeNow = obj.dt;
