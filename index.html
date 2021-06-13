@@ -1,91 +1,139 @@
 <html>
+
 <head>
     <title>
         Weather Info
     </title>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <link rel="icon" href="Images/icon.jpg" type="image/x-icon">
-        <link href="style.css" rel="stylesheet">
-        <script src="script.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="icon" href="Images/icon.jpg" type="image/x-icon">
+    <!-- <link href="style.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </head>
+
 <body>
     <div class="header">
         <h1>Weather Info</h1>
     </div>
     <hr>
-    <div class="frosted">
-        <div class = "one-more">
-            <label for="country-select" class="seperate">Select Country</label>
-            <!-- </br> -->
-            <select name="country-select" class ="selector" id="country-name" placeholder="Your Country" required onchange="setCity()">
-                <option disabled>Select Country</option>
-            </select> 
-            </br>
-            <label for="city-select" class="seperate">Select City</label>
-            <!-- </br> -->
-            <select name="city-select" class="selector" id="city-name" required onchange="getWeather()">
-                <option disabled>Selct City</option>
-            </select>
+    <div class="container-fluid-md">
+            <div class="col">
+                <div class="row-md justify-content-center align-content-center">
+                    <div class="form-floating m-2 p-1">
+                        <select name="country-select" class="form-select" id="country-name"
+                            aria-label="Floating label countru select" required onChange='setCity()'>
+                            <option selected>Select Country</option>
+                        </select>
+                        <label for="floatingSelect">Country</label>
+                    </div>
+                    <br />
+                    <div class="form-floating m-2 p-1">
+                        <select name="city-select" class="form-select" id="city-name"
+                            aria-label="Floating label countru select" required onChange='getWeather()'>
+                            <option selected>Select City</option>
+                        </select>
+                        <label for="floatingSelect">City</label>
+                    </div>
+    
+                </div>
+            </div>
+            <div class="col" id="data" style='display: none;'>
+                <div class="container-md g-3">
+                    <div class="row-md g-2 m-2">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" name='current-time' class="form-control" id="current-time"
+                                    placeholder="Time" readonly>
+                                <label for="current-time">Current time</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 m-2">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" name='temperature' class="form-control" id="temperature"
+                                    placeholder="Temperature" readonly>
+                                <label for="temperature">Temperature (C)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 m-2">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" name='temperature' class="form-control" id="weather"
+                                    placeholder="Temperature" readonly>
+                                <label for="temperature">Weather</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row g-2 m-2'>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="feels-like" placeholder="Feels like" readonly>
+                                <label for="feels-like">Feels like (C)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="max-temp" placeholder="Max temperature" readonly>
+                                <label for="max-temp">Minimum temp.(C)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="min-temp" placeholder="Minimum temp" readonly>
+                                <label for="min-temp">Maximum temp (C)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row g-2 m-2'>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="humidity" placeholder="Feels like" readonly>
+                                <label for="feels-like">Feels like (C)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="windspeed" placeholder="Max temperature" readonly>
+                                <label for="max-temp">Minimum temp.(C)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="pressure" placeholder="Minimum temp" readonly>
+                                <label for="min-temp">Maximum temp (C)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id='error' style="display: none;text-align: center;">
+                <div class="container-fluid p-3">
+                    <h3>Error finding data.Try another request</h3>
+                </div>
+            </div>
+            <div>
+                
+                <!-- </div> -->
+            </div>
         </div>
-        <form>
-            <table>
-                <tr>
-                    <td><label for="place">Current Place: </label></td>
-                    <td><input type="text" name="place" id="location" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="region">Region: </label></td>
-                    <td><input type="text" name="region" id="region" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="local-time">Time: </label></td>
-                    <td><input type="text" name="local-time" id="c-time" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="utc-offset">UTC Offset: </label></td>
-                    <td><input type="text" name="utc-offset" id="utc" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="temp-c">Temperature (C): </label></td>
-                    <td><input type="text" name="temp-c" id="c-temp" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="temp-f">Temperature (F): </label></td>
-                    <td><input type="text" name="temp-f" id="f-temp" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="feels-like">Feels like: </label></td>
-                    <td><input type="text" name="feels-like" id="f-like" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="weather">Weather: </label></td>
-                    <td><input type="text" name="weather" id="weather" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="w-speed">Wind speed: </label></td>
-                    <td><input type="text" name="w-speed" id="wind-speed" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="pressure">Pressure: </label></td>
-                    <td><input type="text" name="pressure" id="pressure" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="humidity">Humidity: </label></td>
-                    <td><input type="text" name="humidity" id="humidity" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="uvi">UV Index: </label></td>
-                    <td><input type="text" name="uvi" id="uv-index" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="vis">Visibility: </label></td>
-                    <td><input type="text" name="vis" id="visibility" disabled></td>
-                </tr>
-            </table>
-            </form>
-            <p id="last-observation" style="padding: 5px;"></p>
+        <p id="last-observation" style="padding: 5px;"></p>
+
+    </div>
     </div>
     <hr>
     <p style="padding: 5px;">Copyright@WeatherInfo</p>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    crossorigin="anonymous"></script>
+
 </html>

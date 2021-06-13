@@ -4,7 +4,7 @@
     background-attachment: fixed;
     /* background-size: cover; */
     /* background-color: chocolate; */
-    background-position: ;
+    /* background-position: ; */
     width: max-content          ;
     padding: 10px 20px 0px 20px;
     /* padding-bottom: 0px; */
@@ -80,7 +80,7 @@ table th td{
     width: 300px;
 }
 
-select{
+/* select{
     width: 200px;
     padding: 5px;
     margin: 10px 10px 10px 80px; 
@@ -108,14 +108,10 @@ select option{
 
 .selector:hover::after{
     background-color: darkgrey;
-}
+} */
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d6e9a3b4bed14c002f72d3f2333d8ec3bc1d3c84
