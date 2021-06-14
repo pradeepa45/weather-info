@@ -1,5 +1,160 @@
-body{
-    /* background-image: url('./Images/bgi.png'); */
+body {
     width: 100vw;
     overflow-x: hidden;
+    color: white;
 }
+
+#body {
+    height: 100vh;
+    color: white;
+    overflow-y: scroll;
+}
+
+.normal {
+    background-image: linear-gradient( 109.6deg,  rgba(121,203,202,1) 11.2%, rgba(119,161,211,1) 91.1% );
+
+}
+
+#stars-img {
+    display: none;
+}
+
+#rain-img {
+    display: none;
+}
+
+#sunny-img {
+    display: none;
+}
+
+#haze-img {
+    display: none;
+}
+
+#cloudy-img {
+    display: none;
+}
+
+#warm-img {
+    display: none;
+}
+
+#snow-img {
+    display: none;
+}
+
+#data {
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+}
+
+#data :hover {
+    box-shadow: -7px 7px 14px #a7a7a7, 7px -7px 14px #e1e1e1;
+}
+
+#data input {
+    background-color: transparent;
+    color: white;
+    border-style: none;
+    font-size: larger;
+}
+
+#data label {
+    color: white;
+}
+
+/* light sunny */
+
+.sunny {
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+
+/* light clear sky - working------------------------*/
+
+.clear-sky {
+    background: linear-gradient(40deg, rgba(41, 209, 228, 1) 32%, rgba(253, 187, 45, 1) 100%);
+}
+
+/* light rain */
+.light-rain{
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,84,166,1) 0%, rgba(132,189,201,1) 90% );
+}
+
+/* light clouds */
+
+.light-clouds {
+    background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255, 255, 255, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%);
+    background-blend-mode: screen;
+}
+
+/* light haze */
+
+.light-haze {
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+/* light snow */
+.light-snow{
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+
+/* light back drop */
+.light{
+    background-image: linear-gradient( 109.6deg,  rgba(121,203,202,1) 11.2%, rgba(119,161,211,1) 91.1% );
+}
+
+/* dark haze */
+
+.dark-haze {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+/* dark clouds */
+
+/* ****************************************************************************************** */
+
+.dark-clouds {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+/* dark clear */
+
+/* ******************************************************************************************* */
+
+.dark-clear {
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    ;
+}
+
+/* dark rains */
+
+/* *********************************************************************************************** */
+
+.dark-rains {
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* dark snow */
+
+/* *************************************************************************************************** */
+
+.dark-snow {
+    background: #000000;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #434343, #000000);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* dark back drop */
