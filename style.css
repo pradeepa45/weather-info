@@ -79,6 +79,7 @@ body {
 
 #data label {
     color: white;
+    font-size: large;
 }
 
 #error {
