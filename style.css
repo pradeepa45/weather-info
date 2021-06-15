@@ -11,8 +11,11 @@ body {
 }
 
 .normal {
-    background-image: linear-gradient( 109.6deg,  rgba(121,203,202,1) 11.2%, rgba(119,161,211,1) 91.1% );
-
+    /* background: #FF0099;
+    background: -webkit-linear-gradient(to right, #493240, #FF0099)
+    background: linear-gradient(to right, #493240, #FF0099); */
+    background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255, 255, 255, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%);
+    background-blend-mode: screen;
 }
 
 #stars-img {
@@ -24,6 +27,10 @@ body {
 }
 
 #sunny-img {
+    display: none;
+}
+
+#dark-img {
     display: none;
 }
 
@@ -41,6 +48,14 @@ body {
 
 #snow-img {
     display: none;
+}
+
+#error-img {
+    display: none;
+}
+
+#selects label {
+    color: black;
 }
 
 #data {
@@ -69,6 +84,17 @@ body {
     color: white;
 }
 
+#error {
+    display: none;
+    text-align: justify;
+    color: white;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    width: fit-content;
+    height: fit-content;
+    justify-self: center;
+}
+
 /* light sunny */
 
 .sunny {
@@ -82,8 +108,9 @@ body {
 }
 
 /* light rain */
-.light-rain{
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,84,166,1) 0%, rgba(132,189,201,1) 90% );
+
+.light-rain {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(0, 84, 166, 1) 0%, rgba(132, 189, 201, 1) 90%);
 }
 
 /* light clouds */
@@ -100,20 +127,21 @@ body {
 }
 
 /* light snow */
-.light-snow{
+
+.light-snow {
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 
-
 /* light back drop */
-.light{
-    background-image: linear-gradient( 109.6deg,  rgba(121,203,202,1) 11.2%, rgba(119,161,211,1) 91.1% );
+
+.light {
+    background-image: linear-gradient( 109.6deg, rgba(121, 203, 202, 1) 11.2%, rgba(119, 161, 211, 1) 91.1%);
 }
 
 /* dark haze */
 
 .dark-haze {
-    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
 }
 
 /* dark clouds */
@@ -129,7 +157,7 @@ body {
 /* ******************************************************************************************* */
 
 .dark-clear {
-    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    background-image: radial-gradient( circle farthest-corner at 50.5% 55%, rgb(12, 23, 158) 0%, rgba(0, 18, 71, 1) 67.9%);
     ;
 }
 
@@ -158,3 +186,19 @@ body {
 }
 
 /* dark back drop */
+
+.dark {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+/* error */
+
+.error {
+    background: #ff9966;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ff5e62, #ff9966);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}

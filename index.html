@@ -17,15 +17,15 @@
     <script src="script.js"></script>
 </head>
 
-<body >
+<body>
     <div id='body' class="normal">
         <div class="header" style="padding-top : 20px; color : white;">
             <h1><img src="./logo.svg" alt="title-logo" height='70px' /> Weather Info</h1>
         </div>
         <hr>
         <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-12 m-2 p-2  align-content-center">
+            <div class="row justify-content-evenly">
+                <div class="col-lg-5 col-md-12 m-2 p-2  align-content-center" id='selects'>
                     <div class="form-floating">
                         <select name="country-select" class="form-select" id="country-name"
                             aria-label="Floating label countru select" required onChange='setCity()'>
@@ -36,7 +36,7 @@
                     <br />
                     <div class="form-floating">
                         <select name="city-select" class="form-select" id="city-name"
-                            aria-label="Floating label countru select" required onChange='getWeather()'>
+                            aria-label="Floating label country select" required onChange='getWeather()'>
                             <option selected>Select City</option>
                         </select>
                         <label for="floatingSelect">City</label>
@@ -49,12 +49,14 @@
                         <img src='./Images/rain.svg' id='rain-img' height="200px" />
                         <img src='./Images/snw.svg' id='snow-img' height="200px" />
                         <img src='./Images/haze.svg' id='haze-img' height="200px" />
+                        <img src='./Images/dark.svg' id='dark-img' height="200px" />
+                        <img src='./Images/error.svg' id='error-img' height="200px" />
 
 
                     </div>
-    
+
                 </div>
-                <div class="col-lg-5 col-md-12 p-1 m-2" id="data" style='display: none;'>
+                <div class="col-lg-5 col-md-12 p-1 m-3" id="data" style='display: none;'>
                     <div class="container-md g-3">
                         <div class="row-md g-2 m-2">
                             <div class="col-md-12 justify-content-center">
@@ -62,110 +64,115 @@
                             </div>
                         </div>
                         <div class="row g-2 m-2">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-floating">
                                     <input type="text" name='current-time' class="form-control" id="current-time"
                                         placeholder="Time" readonly>
                                     <label for="current-time"><i class="far fa-clock"></i> Current time</label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
+                                <div class="form-floating">
+                                    <input type="text" name='weather' class="form-control" id="weather"
+                                        placeholder="Weather" readonly>
+                                    <label for="temperature"><i class="fas fa-cloud-moon"></i> Weather</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row g-2 m-2">
+                            <div class="col-md-3">
                                 <div class="form-floating">
                                     <input type="text" name='temperature' class="form-control" id="temperature"
                                         placeholder="Temperature" readonly>
-                                    <label for="temperature"> <i class="fas fa-thermometer-half"></i> Temperature</label>
+                                    <label for="temperature"> <i class="fas fa-thermometer-half"></i>
+                                        Current</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="feels-like" placeholder="Feels like"
+                                        readonly>
+                                    <label for="feels-like"><i class="fas fa-temperature-low"></i> Feels</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="max-temp" placeholder="Max temperature"
+                                        readonly>
+                                    <label for="max-temp"><i class="fas fa-sort-amount-down"></i> Min &deg;C</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="min-temp" placeholder="Minimum temp"
+                                        readonly>
+                                    <label for="min-temp"><i class="fas fa-sort-amount-up"></i> Max &deg;C</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row g-2 m-2">
-                            <div class="col-md-12">
-                                <div class="form-floating">
-                                    <input type="text" name='temperature' class="form-control" id="weather"
-                                        placeholder="Temperature" readonly>
-                                    <label for="temperature"><i class="fas fa-cloud-moon"></i> Weather</label>
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" name='sunrise' class="form-control" id="sunrise"
                                         placeholder="Sun rise" readonly>
-                                    <label for="sunrise"><img src='./sunrise.svg' height="22px"/> Sun Rise</label>
+                                    <label for="sunrise"><i class="fas fa-sun"></i> Sun Rise</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" name='sunset' class="form-control" id="sunset" placeholder="Sun set"
-                                        readonly>
-                                    <label for="sunset"><img src='./sunset.svg' height="22px"/> Sun set</label>
+                                    <input type="text" name='sunset' class="form-control" id="sunset"
+                                        placeholder="Sun set" readonly>
+                                    <label for="sunset"><i class="fas fa-cloud-sun"></i>  Sun set</label>
                                 </div>
                             </div>
                         </div>
+
                         <div class='row g-2 m-2'>
                             <div class="col-md-4">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="feels-like" placeholder="Feels like"
+                                    <input type="text" class="form-control" id="humidity" placeholder="Feels like"
                                         readonly>
-                                    <label for="feels-like"><i class="fas fa-temperature-low"></i> Feels like</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="max-temp" placeholder="Max temperature"
-                                        readonly>
-                                    <label for="max-temp"><i class="fas fa-sort-amount-down"></i> Minimum</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="min-temp" placeholder="Minimum temp"
-                                        readonly>
-                                    <label for="min-temp"><i class="fas fa-sort-amount-up"></i> Maximum</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='row g-2 m-2'>
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="humidity" placeholder="Feels like" readonly>
-                                    <label for="feels-like"><i class="fas fa-tint"></i>                                    Humidity</label>
+                                    <label for="feels-like"><i class="fas fa-tint"></i> Humidity</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="windspeed" placeholder="Max temperature"
                                         readonly>
-                                    <label for="max-temp"> <i class="fas fa-wind"></i>                                    Wind speed</label>
+                                    <label for="max-temp"> <i class="fas fa-wind"></i> Wind </label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="pressure" placeholder="Minimum temp"
                                         readonly>
-                                    <label for="min-temp"> <i class="fas fa-tachometer-alt"></i>                                    Pressure</label>
+                                    <label for="min-temp"> <i class="fas fa-tachometer-alt"></i> Pressure</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col" id='error' style="display: none;text-align: center; color : tomato">
-                <div class="container-fluid p-3">
-                    <h3>Error finding data.Try another request</h3>
+                <div class="col-lg-5 col-md-12 justify-content-evenly align-content-between m-2 p-2" id='error'>
+                    <div class="container-fluid align-content-center p-3 m-3">
+                        <h3 style="font-weight : 400;">Error finding data.<br />Try another request</h3>
+                    </div>
                 </div>
             </div>
+
             <div>
-    
+
                 <!-- </div> -->
             </div>
         </div>
-    
-        
+
+
         <footer style="width: 100%; margin-top: 10px;">
             <hr>
             <p style="padding: 5px;">Copyright@WeatherInfo</p>
         </footer>
     </div>
-</div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

@@ -26,6 +26,7 @@ function setCity() {
 
     for (let i = 0; i < countryObj.data.length; i++) {
         if (countryObj.data[i].country == document.getElementById("country-name").value) {
+            console.log(countryObj.data[i].country);
             for (let j = 0; j < countryObj.data[i].cities.length; j++) {
                 let newOption = document.createElement("option");
                 newOption.innerHTML = countryObj.data[i].cities[j];
@@ -37,6 +38,10 @@ function setCity() {
 }
 
 var sky;
+var img = false;
+var imgId;
+var bg = false;
+var bgClass;
 
 function getWeather() {
     cityName = document.getElementById("city-name").value;
@@ -49,25 +54,24 @@ function getWeather() {
     req.send();
     req.onload = () => {
         let obj = JSON.parse(req.response);
-        console.log(obj);
+        // console.log(obj);
         if (obj.cod == 404) {
-            document.getElementById('data').style.display = 'none';
-            document.getElementById('error').style.display = 'block';
+            noData();
         }
         else {
             document.getElementById('error').style.display = 'none'
             document.getElementById('data').style.display = 'block';
-            console.log(obj.weather);
+            // console.log(obj.weather);
             const timeNow = obj.dt;
             const utcOff = obj.timezone;
             const sunset = obj.sys.sunset;
             const sunrise = obj.sys.sunrise;
             var sunsetTime = new Date(sunset * 1000 + utcOff * 1000).toISOString().split("T")[1].split(".")[0];
             var sunriseTime = new Date(sunrise * 1000 + utcOff * 1000).toISOString().split("T")[1].split(".")[0];
-            console.log(sunriseTime, sunsetTime);
+            // console.log(sunriseTime, sunsetTime);
             var date = new Date(timeNow * 1000 + utcOff * 1000).toISOString();
             var ctime = date.split("T")[1].split(".")[0];
-            console.log(ctime);
+            // console.log(ctime);
             var hours = ctime.split(":")[0];
             var min = ctime.split(":")[1];
             var img = false;
@@ -81,93 +85,81 @@ function getWeather() {
 
             if (sky == 'light') {
                 if (obj.weather[0].description == 'sunny') {
-                    // ************************************************************
-                    document.getElementById('body').classList.remove('normal');
-                    document.getElementById('body').classList.add('sunny');
-                    document.getElementById('sunny-img').style.display = 'block';
+                    setBackGround('sunny');
+                    setImage('sunny-img');
                     console.log('sunny')
                 }
                 else if (obj.weather[0].description == 'clear sky') {
-                    // ***********************************************************************************
-                    document.getElementById('body').classList.remove('normal');
-                    document.getElementById('body').classList.add('clear-sky');
-                    document.getElementById('warm-img').style.display = 'block'
+                    setBackGround('clear-sky');
+                    setImage('warm-img')
                     console.log('clear sky');
                 }
                 else if (obj.weather[0].description.includes('rains') || obj.weather[0].description.includes('rain')) {
-                    // ************************************************************
-                    document.getElementById('body').classList.remove('normal');
-                    document.getElementById('body').classList.add('light-rains');
-                    document.getElementById('rain-img').style.display = 'block';
+                    setBackGround('light-rains');
+                    setImage('rain-img')
+
                     console.log('rains');
 
                 }
                 else if (obj.weather[0].description.includes('clouds')) {
-                    // **************************************************************************************
                     console.log('clouds');
-                    document.getElementById('cloudy-img').style.display = 'block'
-                    document.getElementById('body').classList.remove('normal');
-                    document.getElementById('body').classList.add('light-clouds');
+                    setDarkFont();
+                    setImage('cloudy-img')
+                    setBackGround('light-clouds');
 
                 }
                 else if (obj.weather[0].description.includes('haze')) {
-                    // ******************************************************************************
                     console.log('haze');
-                    document.getElementById('body').classList.remove('normal');
-                    document.body.classList.add('light-haze');
-                    document.getElementById('haze-img').style.display = 'block'
+                    setBackGround('light-haze');
+                    setImage('haze-img');
                 }
                 else if (obj.weather[0].description.includes('snow')) {
-                    console.log('snow')
-
+                    console.log('snow');
+                    setBackGround('light-snow')
+                    setDarkFont();
+                    setImage('snow-img');
                 }
                 else {
-                    document.getElementById('body').classList.remove('normal');
-                    document.body.classList.add('light');
-                    document.getElementById('warm-img').style.display = 'block'
-
+                    setBackGround('light');
+                    setImage('warm-img');
+                    console.log('fallback')
                 }
             }
             else if (sky == 'dark') {
                 if (obj.weather[0].description == 'clear sky') {
-                    // *********************************************************************************
-                    document.getElementById('body').classList.remove('normal');
-                    document.getElementById('body').classList.add('dark-clear');
-                    document.getElementById('stars-img').style.display = 'block'
+                    setBackGround('dark-clear');
+                    setImage('stars-img');
+                    console.log('clear sky');
+                    setLightFont();
                 }
 
 
-                else if (obj.weather[0].description.includes('rains')||obj.weather[0].description.includes('rain')) {
+                else if (obj.weather[0].description.includes('rains') || obj.weather[0].description.includes('rain')) {
                     console.log('rains');
-                    // **********************************************************************
-                    document.getElementById('body').classList.remove('normal');
-                    document.getElementById('body').classList.add('dark-rains');
-                    document.getElementById('rain-img').style.display = 'block'
-
+                    setBackGround('dark-rains');
+                    setImage('rain-img')
                 }
                 else if (obj.weather[0].description.includes('clouds')) {
-                    // *******************************************************
                     console.log('clouds');
-                    document.getElementById('body').classList.remove('normal');
-                    document.getElementById('body').classList.add('dark-clouds');
-                    document.getElementById('cloudy-img').style.display = 'block'
-
+                    setBackGround('dark-clouds');
+                    setLightFont();
+                    setImage('cloudy-img');
 
                 }
                 else if (obj.weather[0].description.includes('snow')) {
-                    // ***************************************************************
                     console.log('snow')
-                    document.getElementById('body').classList.remove('normal'); 
-                    document.getElementById('body').classList.add('dark-snow');
-                    document.getElementById('snow-img').style.display = 'block'
+                    setBackGround('dark-snow');
+                    setImage('snow-img');
                 }
                 else if (obj.weather[0].description.includes('haze')) {
-                    // *******************************************************************
                     console.log('haze');
-                    document.getElementById('body').classList.remove('normal');
-                    document.getElementById('body').classList.add('dark-haze');
-                    document.getElementById('haze-img').style.display = 'block'
-
+                    setBackGround('dark-haze');
+                    setImage('haze-img')
+                }
+                else {
+                    setBackGround('dark');
+                    setImage('dark-img');
+                    console.log('fallback');
                 }
             }
             document.getElementById('location-text').innerHTML = obj.name;
@@ -189,4 +181,68 @@ function getWeather() {
         }
 
     }
+}
+
+function setLightFont() {
+    var d = document.getElementById('data').querySelectorAll('input');
+    d.forEach((item) => {
+        item.style.color = '#fff'
+    })
+    var l = document.getElementById('data').querySelectorAll('label');
+    l.forEach((item) => {
+        item.style.color = '#fff'
+    })
+    document.getElementById('location-text').style.color = '#fff'
+}
+
+function setDarkFont() {
+    var d = document.getElementById('data').querySelectorAll('input');
+    d.forEach((item) => {
+        item.style.color = '#000'
+    })
+    var l = document.getElementById('data').querySelectorAll('label');
+    l.forEach((item) => {
+        item.style.color = '#000'
+    })
+    document.getElementById('location-text').style.color = '#000'
+
+}
+
+function setImage(id) {
+    if (img) {
+        document.getElementById(imgId).style.display = 'none';
+        imgId = id;
+        document.getElementById(id).style.display = 'block';
+    }
+    else {
+        img = true;
+        imgId = id;
+        document.getElementById(id).style.display = 'block';
+        console.log('starting with', imgId)
+    }
+}
+
+function setBackGround(name) {
+    if (bg) {
+        console.log('changed bg from ', bgClass)
+        document.getElementById('body').classList.remove(bgClass);
+        document.getElementById('body').classList.add(name);
+        bgClass = name;
+        console.log('to ', bgClass)
+    }
+    else {
+        console.log('starting with normal');
+        document.getElementById('body').classList.remove('normal');
+        bg = true;
+        document.getElementById('body').classList.add(name);
+        bgClass = name;
+        console.log('changed to ', bgClass)
+    }
+}
+
+function noData() {
+    document.getElementById('data').style.display = 'none';
+    document.getElementById('error').style.display = 'block';
+    setImage('error-img')
+    setBackGround('error');
 }
